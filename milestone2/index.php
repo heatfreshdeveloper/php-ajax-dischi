@@ -1,7 +1,3 @@
-<?php
-require_once __DIR__ . "/database/album.php";
-?>
-
 
 <!DOCTYPE html>
 <html lang="en">
@@ -15,16 +11,25 @@ require_once __DIR__ . "/database/album.php";
         <title>Php Dischi</title>
     </head>
     <body>
-        <main>
-            <div class="container">
-                <?php
-                foreach ($albumsList as $album => $element) {
-                require __DIR__ . "/components/cards.php";
-                    
-                }
+        <main class="container" id="vueContainer">
 
-            ?>
-        </div>
+            <div class="row row-cols-4 g-4" id="cardsContainer">
+            <div class="col" v-for="album in albumList" :key="album.id.value">
+                <div class="card">
+                <img :src="album.poster" class="card-img-top" alt="...">
+                <div class="card-body">
+                    <h5 class="card-title">{{album.title}}</h5>
+                    <div class="card-text">
+                        <ul>
+                            <li>{{album.author}}</li>
+                            <li>{{album.year}}</li>
+                        </ul>
+                    </div>
+                </div>
+                </div>
+            </div>
+            </div>
     </main>
+    <script src="/milestone2/main.js"></script>
 </body>
 </html>
